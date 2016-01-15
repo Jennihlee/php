@@ -1,4 +1,7 @@
-<?php header("Content-Type: text/html; charset=UTF-8"); ?>
+<?php 
+session_start();
+header("Content-Type: text/html; charset=UTF-8"); 
+?>
 
 <?php
 $name=$_POST['name'];
@@ -15,16 +18,16 @@ $password=$_POST['pw'];
 
 <?php
 if($name=="id" && $password=="pw"){
-	setCookie('isLogin', '1');
-	setCookie('name', $name);
+	$_SESSOIN['isLogin']=1;
+	$_SESSION['name']=$name;
 ?> <h1>로그인 완료</h1>
 I know you, <?=$name?>!<br>
 Your password is <?=$password?><br>
 <a href="./postForm.php">BACK</a>
 <?php
 }else{
-	setCookie('isLogin', '0');
-	setCookie('name', '');
+	$_SESSOIN['isLogin']=0;
+        $_SESSION['name']='';
 ?>
 사용자가 없습니다.<br>
 다시 로그인 해보세요.<br>
