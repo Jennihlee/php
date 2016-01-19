@@ -1,6 +1,14 @@
 <?php
 session_start();
 header("Content-Type: text/html; charset=UTF-8"); 
+
+include('db.php');
+$link = mysql_connect($db['host'], $db['user'], $db['pw']);
+if (!$link) {
+    die('Not connected : ' . mysql_error());
+}
+echo 'Connected successfully';
+mysql_close($link);
 ?>
 
 <!-- Latest compiled and minified CSS -->
